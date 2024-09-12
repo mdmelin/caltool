@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "caltool"
+authors = [
+  {name="Max Melin", email="mmelin@ucla.edu"},
+]
+description = "Python library for lab equipment calibration"
+readme = "README.md"
+requires-python = ">=3.0"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+	     "numpy",
+]
+dynamic = ["version"]
+
+[project.scripts]
+caltool = "caltool.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."] 
+include = ["caltool"]
+namespaces = false  # disable PEP 420 namespaces
+
+#[tool.setuptools.dynamic]
+#version = {attr = "caltool.VERSION"}
