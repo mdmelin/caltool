@@ -45,12 +45,12 @@ def create_calibration_curve(device_name,
         json.dump(data_dict, open(Path(preferences['calibration_dir']) / f'{device_name}.json', 'w'))
 
 
-def load_calibration_curve(device_name):
+def _load_calibration_curve(device_name):
     data = json.load(open(Path(preferences['calibration_dir']) / f'{device_name}.json', 'r'))
     return data
 
 def apply_calibration_curve(device_name, target_value):
-    cal = load_calibration_curve(device_name)
+    cal = _load_calibration_curve(device_name)
     roots = inverse_from_coefficients(cal['coefs'], target_value)
     print(roots)
     input_value = sanitize_roots(roots, cal['reference_values'])

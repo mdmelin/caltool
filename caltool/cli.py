@@ -37,6 +37,11 @@ def main(command_line=None):
     # The show_calibration subparser
     show_calibration = subparsers.add_parser('show_calibration', help='Show calibration curve for a device')
 
+    # rename subparser
+    rename = subparsers.add_parser('rename_device', help='Show calibration curve for a device')
+    rename.add_argument('old_name', help='The current name of the device')
+    rename.add_argument('new_name', help='The new name of the device')
+
     args = parser.parse_args(command_line)
 
     if args.debug:
@@ -47,6 +52,8 @@ def main(command_line=None):
             return
         else:
             create_calibration_curve(**vars(args))   
+    elif args.command == 'rename_device':
+        rename_device(args.old_name, args.new_name)
 
     if __name__ == '__main__':
         main()

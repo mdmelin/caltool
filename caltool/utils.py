@@ -2,6 +2,7 @@ import matplotlib
 import numpy as np
 from pathlib import Path
 import matplotlib.pyplot as plt
+from .io import preferences
 
 tcolor = dict(r = lambda s: f'\033[91m{s}\033[0m',
               g = lambda s: f'\033[92m{s}\033[0m',
@@ -19,6 +20,12 @@ def quadratic(x, a, b, c):
 
 def cubic(x, a, b, c, d):
     return a * x**2 + b * x + c
+
+def rename_device(old_name, new_name):
+    for ext in ['json', 'png']:
+        old_path = Path(preferences['calibration_dir']) / f'{old_name}.{ext}'
+        new_path = Path(preferences['calibration_dir']) / f'{new_name}.{ext}'
+        old_path.rename(new_path)
 
 def inverse_from_coefficients(coefs, y):
     """
