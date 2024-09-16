@@ -1,4 +1,5 @@
 import argparse
+import sys
 from .utils import *
 from .calibrate import create_calibration_curve
 
@@ -9,7 +10,7 @@ def main(command_line=None):
         action='store_true',
         help='Print debug info'
     )
-    subparsers = parser.add_subparsers(dest='command')
+    subparsers = parser.add_subparsers(dest='command', required=True)
 
     # The calibration subparser
     calibrate = subparsers.add_parser('calibrate', help='Run calibration')
