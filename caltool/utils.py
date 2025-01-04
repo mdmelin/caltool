@@ -53,4 +53,9 @@ def sanitize_roots(roots, input_values):
     assert len(roots) == 1, f'Expected 1 root, got {len(roots)}. Check your curve or the value you are requesting.'
     return roots[0]
 
-    
+def get_float(prompt="Enter a number: "):
+    while True:
+        try:
+            return float(input(prompt))
+        except ValueError:
+            print("Invalid input. Please enter a valid number.")
