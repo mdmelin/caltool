@@ -19,7 +19,7 @@ def quadratic(x, a, b, c):
     return a * x**2 + b * x + c
 
 def cubic(x, a, b, c, d):
-    return a * x**2 + b * x + c
+    return a * x**3 + b * x**2 + c * x + d
 
 def rename_device(old_name, new_name):
     for ext in ['json', 'png']:
